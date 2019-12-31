@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>table的边线 | 莫名名状</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="当table应用样式“border-collapse: collapse;”时，如果是表格的外边线和单元格的边线同色时，一般不会出现什么问题；可是当它们不同时，或是需要单元格的左右边线和底部边线不同时，就会出现些许尴尬的事。 表现为：以单元格的边线优先。 如何才能做到表格的边线和单元格甚至表头（th）的边线不同呢？ 以下是我的做法：  设置表格的边线.table{border:1px solid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="table的边线">
+<meta property="og:url" content="http://kvass.cn/2011/05/07/table-e7-9a-84-e8-be-b9-e7-ba-bf/index.html">
+<meta property="og:site_name" content="莫名名状">
+<meta property="og:description" content="当table应用样式“border-collapse: collapse;”时，如果是表格的外边线和单元格的边线同色时，一般不会出现什么问题；可是当它们不同时，或是需要单元格的左右边线和底部边线不同时，就会出现些许尴尬的事。 表现为：以单元格的边线优先。 如何才能做到表格的边线和单元格甚至表头（th）的边线不同呢？ 以下是我的做法：  设置表格的边线.table{border:1px solid">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2011-05-07T07:11:47.000Z">
+<meta property="article:modified_time" content="2019-12-31T03:11:06.255Z">
+<meta property="article:author" content="kvass">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css">
+  <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    });
+  </script>
+  
+<link rel="stylesheet" href="/css/index.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">莫名名状</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://dribbble.com/clovertuan" target="_blank" class="nav-icn iconfont icon-dribbble"></a>
+          
+        
+          
+            <a href="https://www.behance.net/clovertuan" target="_blank" class="nav-icn iconfont icon-behance"></a>
+          
+        
+          
+            <a href="http://clovertuan.lofter.com/" target="_blank" class="nav-icn iconfont icon-lofter"></a>
+          
+        
+          
+            <a href="https://www.instagram.com/clovertuan/" target="_blank" class="nav-icn iconfont icon-instagram"></a>
+          
+        
+          
+            <a href="https://github.com/cloverTuan" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article">
+  <h2 class="title">table的边线</h2>
+  <p class="sub">May 7, 2011</p>
+  <article class="content">
+    <p>当table应用样式“border-collapse: collapse;”时，如果是表格的外边线和单元格的边线同色时，一般不会出现什么问题；可是当它们不同时，或是需要单元格的左右边线和底部边线不同时，就会出现些许尴尬的事。</p>
+<p>表现为：以单元格的边线优先。</p>
+<p>如何才能做到表格的边线和单元格甚至表头（th）的边线不同呢？</p>
+<p>以下是我的做法：</p>
+<blockquote>
+<p>设置表格的边线<br>.table{border:1px solid #000;width:100%;}</p>
+<p>设置表头（th）的边线－－只有左边线和下边线  </p>
+<p>.table th{border:1px solid #f60;border-width:0 0 1px 1px;}</p>
+<p>设置表格的边线－－是伪类，把第一个表头单元格的左边丝去掉（显示出表格的边线）  </p>
+<p>.table tr th:first-child{border-left:none;}  </p>
+<p>设置单元格的边线－－这里是只显示上边线和左边线，不然表格的底部线会显示不出来  </p>
+<p>.table td{padding:3px;border:1px solid #6f0;border-width: 1px 0 0 1px;}  </p>
+<p>设置单元格的边线－－是伪类，把第一个单元格的左边丝去掉（显示出表格的边线）  </p>
+<p>.table tr td:first-child{border-left:none;}</p>
+</blockquote>
+<p>通过这么设置后，基本就完成了。不过因为应用了伪类，所以IE6不支持。还有一个小问题，就是在IE7下，表头（TH）的下边线无法盖住单元格（TD）的上边线。这个设计时需要留意。</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2011/05/18/html-e9-87-8c-e7-9a-84p-e5-8c-85-e5-90-abdiv-e7-9a-84-e8-a1-a8-e7-8e-b0/" class="link f-fl">⟵html里的P包含DIV的表现</a>
+    
+    
+      <a href="/2011/04/29/e6-88-91-e5-92-8c-e4-bd-a0-e7-bb-88-e8-a6-81-e6-98-af-e2-80-9c-e9-99-8c-e8-b7-af-e4-ba-ba-e2-80-9d-e4-ba-86/" class="link f-fr">我和你终要是“陌路人”了⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  &copy; 2019 kvass&nbsp;&nbsp;&nbsp;&nbsp
+  <a href="www.beian.miit.gov.cn" target="_blank">粤ICP备18013480号-3</a>
+</footer>
+  </div>
+</body>
+</html>
